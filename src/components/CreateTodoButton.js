@@ -1,13 +1,10 @@
 import React from "react";
 
 function CreateTodoButton(props) {
-    return (
-        <button
-        onClick={props.setOpenModal}
-        >
-        +
-        </button>
-    );
+  const onClickButton = () => {
+    console.log("Nuevo TODO");
+  };
+  return <button onClick={onClickButton}>+</button>;
 }
 
-export { CreateTodoButton }
+export { CreateTodoButton };
