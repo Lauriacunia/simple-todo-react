@@ -88,6 +88,9 @@ function App(props) {
     saveItem(newItem);
   }
   
+  React.useEffect(() => {
+    console.log('Use Effect-> watch Item', Item)
+  }, [Item])
 
   return (
     <>
