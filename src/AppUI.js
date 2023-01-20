@@ -8,14 +8,20 @@ import { CreateTodoButton } from "./components/CreateTodoButton";
 import { TodoContext } from "./utils/TodoContext";
 
 function AppUI() {
+  const {
+    serchedItem,
+    completeTodo,
+    uncompleteTodo,
+    deleteTodo,
+  } = React.useContext(TodoContext);
   return (
     <>
       <TodoCounter />
       <TodoSearch />
 
-      <TodoContext.Consumer>
+      {/* <TodoContext.Consumer> */}
         {/* Sintaxis de render props. Se envia un callback que recibe el valor del contexto */}
-        { ({ serchedItem, completeTodo, uncompleteTodo, deleteTodo }) => (
+        {/* { ({ serchedItem, completeTodo, uncompleteTodo, deleteTodo }) => ( */}
           <TodoList>
           {/*Accedo a la lista con props.children */}
           {serchedItem.map((todo) => (
@@ -35,8 +41,8 @@ function AppUI() {
             />
           ))}
         </TodoList>
-        )}
-      </TodoContext.Consumer>
+        {/* )} */}
+      {/* </TodoContext.Consumer> */}
 
       <CreateTodoButton />
     </>
