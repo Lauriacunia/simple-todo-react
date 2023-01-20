@@ -1,26 +1,22 @@
-import React from "react";
-
-function TodoSearch({searchValue, setSearchValue}) {
-
-    //const [searchValue, setSearchValue] = React.useState("");
-
-    // const onSearchValueChange = (event) => {
-    //     console.log(event.target.value);
-    // };
-    return (
-        <>
-            <input
-            placeholder="Cebolla"
-            //onChange={onSearchValueChange}
-            onChange={(event) => {
-                setSearchValue(event.target.value);
-            }}
-            value={searchValue}
-            />
-            <p>{searchValue}</p>
-        </>
-    );
- }
+import React from 'react';
+import { TodoContext } from '../utils/TodoContext';
 
 
-export { TodoSearch }
+function TodoSearch() {
+  const { searchValue, setSearchValue } = React.useContext(TodoContext);
+  
+  const onSearchValueChange = (event) => {
+    console.log(event.target.value);
+    setSearchValue(event.target.value);
+  };
+
+  return (
+    <input
+      placeholder="Cebolla"
+      value={searchValue}
+      onChange={onSearchValueChange}
+    />
+  );
+}
+
+export { TodoSearch };
