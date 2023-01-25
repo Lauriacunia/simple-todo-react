@@ -2,7 +2,7 @@ import React from "react";
 
 function CreateTodoButton(props) {
   const onClickButton = () => {
-    console.log("Nuevo TODO");
+    props.setOpenModal(true);
   };
   return <button onClick={onClickButton}>+</button>;
 }

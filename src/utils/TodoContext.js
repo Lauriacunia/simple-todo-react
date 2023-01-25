@@ -16,6 +16,8 @@ function TodoProvider(props) {
   const [Item, saveItem] = useLocalStorage("TODOS_V1", defaultTodos);
 
   const [searchValue, setSearchValue] = React.useState("");
+
+  const [openModal, setOpenModal] = React.useState(false);
  
 
   const completedItem = Item.filter(todo => !!todo.completed).length; // true
@@ -55,6 +57,15 @@ function TodoProvider(props) {
     newItem.splice(todoIndex, 1);
     saveItem(newItem);
   }
+  // Función para añadir un nuevo TODO
+  const addTodo = (text) => {
+    const newTodo = [...Item];
+    newTodo.push({
+      completed: false,
+      text,
+    });
+    saveItem(newTodo);
+  };
   
   React.useEffect(() => {
     console.log('Use Effect-> watch Item', Item)
@@ -73,7 +84,10 @@ function TodoProvider(props) {
                 serchedItem,
                 completeTodo,
                 uncompleteTodo,
-                deleteTodo
+                deleteTodo,
+                openModal,
+                setOpenModal,
+                addTodo,
             }
         }>
             {props.children}
